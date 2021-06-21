@@ -3,7 +3,7 @@ from pprint import pprint
 
 TOKEN = '958eb5d439726565e9333aa30e50e0f937ee432e927f0dbd541c541887d919a7c56f95c04217915c32008'
 USER_ID = '552934290'
-token_yd = 'AQAAAABVR-QsAAcnmDgIDf2r-Ex-mIXUwvUHxQA'
+token_yd = ''
 
 url = 'https://api.vk.com/method/photos.get'
 params = {'owner_id':USER_ID,
@@ -47,7 +47,7 @@ for photo in photos:
     max_size_type = max(sizes, key=get_biggest_px)['type']
     file_name = max_size_url.split('?')[0].split('/')[-1]
     download_photo(max_size_url)
-    url = get_upload(file_name,'AQAAAABVR-QsAAcnmDgIDf2r-Ex-mIXUwvUHxQA')
+    url = get_upload(file_name,token_yd)
     params = {'path': f"Netologe/f'{file_name}'", 'fields': 'json'}
     headers = {'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': f'OAuth {token_yd}'}
     resp = requests.put(url, data=open(file_name, 'rb'))
